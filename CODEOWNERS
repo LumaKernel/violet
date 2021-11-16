@@ -24,8 +24,7 @@ pnpm-lock.yaml @violet-ts/security
 /pkg/api/prisma/ @violet-ts/infrastructure
 /pkg/api/api/healthz/ @violet-ts/infrastructure
 /pkg/api/.env.example @violet-ts/infrastructure
-/pkg/api/src/utils/envValues.ts @violet-ts/infrastructure
-/pkg/api/src/utils/envValues.ts @violet-ts/infrastructure
+/pkg/def/ @violet-ts/infrastructure
 **/s3.ts @violet-ts/infrastructure
 **/aws-credential.ts @violet-ts/infrastructure
 

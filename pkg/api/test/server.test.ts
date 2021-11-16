@@ -28,6 +28,20 @@ test('dependency injection into controller', async () => {
   const message = 'test message'
   const res = await injectedController.get({
     query: { limit, message },
+    logger: null as any,
+    cookies: {},
+    setCookie: () => {
+      throw new Error('not implemented')
+    },
+    getUserClaims: () => {
+      throw new Error('not implemented')
+    },
+    ensureUserClaims: () => {
+      throw new Error('not implemented')
+    },
+    refreshUserClaims: () => {
+      throw new Error('not implemented')
+    },
   })
 
   if (res.status !== 200) fail('Response must be successful')

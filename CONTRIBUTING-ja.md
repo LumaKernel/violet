@@ -21,6 +21,7 @@ pnpm run dev
 - web: [http://localhost:3000](http://localhost:3000)
 - api: [http://localhost:8080](http://localhost:8080)
 - minio ui: [http://localhost:9001](http://localhost:9001)
+- Firebase Auth Suite Auth:[http://localhost:4000/auth](http://localhost:4000/auth)
 
 ### チェックアウト後
 
