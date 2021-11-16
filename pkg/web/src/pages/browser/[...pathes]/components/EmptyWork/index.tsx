@@ -1,11 +1,11 @@
 import { acceptExtensions, fileTypes } from '@violet/def/constants'
 import type { ApiRevision } from '@violet/lib/types/api'
 import type { ProjectId, WorkId } from '@violet/lib/types/branded'
-import { Modal } from '@violet/web/src/components/molecules/Modal'
 import { BrowserContext } from '@violet/web/src/contexts/Browser'
 import { useApi } from '@violet/web/src/hooks'
 import { colors, fontSizes } from '@violet/web/src/utils/constants'
 import React, { useContext, useState } from 'react'
+import { CardModal } from 'src/components/organisms/CardModal'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -101,9 +101,9 @@ export const EmptyWork = (props: { projectId: ProjectId; workId: WorkId }) => {
   return (
     <Container>
       {openAlert ? (
-        <Modal closeModal={closeModal}>
+        <CardModal open={openAlert} onClose={closeModal}>
           <AlertMessage>UnSupported File Format!</AlertMessage>
-        </Modal>
+        </CardModal>
       ) : (
         <>
           <DraggingPanel dragging={dragging}>

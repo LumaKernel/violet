@@ -2,6 +2,7 @@ import { ApiProvider } from '@violet/web/src/contexts/Api'
 import { BrowserProvider } from '@violet/web/src/contexts/Browser'
 import { fontSizes } from '@violet/web/src/utils/constants'
 import type { AppProps } from 'next/app'
+import { ApiWithSigningProvider } from 'src/contexts/ApiWithSigning'
 import { createGlobalStyle } from 'styled-components'
 import { AuthProvider } from '../contexts/Auth'
 
@@ -30,13 +31,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
-      <AuthProvider>
-        <ApiProvider>
-          <BrowserProvider>
-            <Component {...pageProps} />
-          </BrowserProvider>
-        </ApiProvider>
-      </AuthProvider>
+      <ApiProvider>
+        <AuthProvider>
+          <ApiWithSigningProvider>
+            <BrowserProvider>
+              <Component {...pageProps} />
+            </BrowserProvider>
+          </ApiWithSigningProvider>
+        </AuthProvider>
+      </ApiProvider>
     </>
   )
 }

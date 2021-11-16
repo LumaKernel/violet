@@ -1,11 +1,11 @@
 import type { ProjectId } from '@violet/lib/types/branded'
 import { PlusIcon } from '@violet/web/src/components/atoms/PlusIcon'
 import { Spacer } from '@violet/web/src/components/atoms/Spacer'
-import { Modal } from '@violet/web/src/components/molecules/Modal'
 import { pagesPath } from '@violet/web/src/utils/$path'
 import { alphaLevel, colors, fontSizes } from '@violet/web/src/utils/constants'
 import Link from 'next/link'
 import { useState } from 'react'
+import { CardModal } from 'src/components/organisms/CardModal'
 import type { BrowserProject } from 'src/types/browser'
 import styled from 'styled-components'
 import { ProjectNameInput } from './ProjectNameInput'
@@ -82,13 +82,11 @@ export const ProjectBar = (props: { projects: BrowserProject[]; projectId: Proje
         </Link>
       ))}
       <PlusIcon onClick={addNewProject} />
-      {isClickAddProject && (
-        <Modal closeModal={closeModal}>
-          <Spacer axis="y" size={80} />
-          <Message>Please enter a project name</Message>
-          <ProjectNameInput inputCompleted={closeModal} />
-        </Modal>
-      )}
+      <CardModal open={isClickAddProject} onClose={closeModal}>
+        <Spacer axis="y" size={80} />
+        <Message>Please enter a project name</Message>
+        <ProjectNameInput inputCompleted={closeModal} />
+      </CardModal>
     </Container>
   )
 }

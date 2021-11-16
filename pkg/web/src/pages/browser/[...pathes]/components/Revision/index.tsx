@@ -1,11 +1,11 @@
 import { acceptExtensions, fileTypes } from '@violet/def/constants'
 import type { ProjectId, WorkId } from '@violet/lib/types/branded'
 import { Spacer } from '@violet/web/src/components/atoms/Spacer'
-import { Modal } from '@violet/web/src/components/molecules/Modal'
 import { BrowserContext } from '@violet/web/src/contexts/Browser'
 import { useApi } from '@violet/web/src/hooks'
 import { colors, fontSizes } from '@violet/web/src/utils/constants'
 import { useContext, useState } from 'react'
+import { CardModal } from 'src/components/organisms/CardModal'
 import type { BrowserRevision } from 'src/types/browser'
 import styled from 'styled-components'
 import { AddButton } from './AddButton'
@@ -107,11 +107,9 @@ export const Revision = (props: {
       onDragLeave={() => setIsFile(false)}
       onChange={onChange}
     >
-      {openAlert && (
-        <Modal closeModal={closeModal}>
-          <AlertMessage>UnSupported File Format!</AlertMessage>
-        </Modal>
-      )}
+      <CardModal open={openAlert} onClose={closeModal}>
+        <AlertMessage>UnSupported File Format!</AlertMessage>
+      </CardModal>
       {isFile && <Dropper type="file" accept={acceptExtensions} />}
       <DisplayWorksArea>
         <DisplayWorksFrame>REVISION -- {props.revision.id}</DisplayWorksFrame>

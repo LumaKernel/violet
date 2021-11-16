@@ -12,6 +12,19 @@ services:
       - mysql_data:/var/lib/mysql
       - ./docker/dev/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
 
+  firebase:
+    build: ./docker/dev/firebase
+    restart: always
+    volumes:
+      - ./docker/dev/firebase:/opt/workspace:cached
+    ports:
+      - 9099:9099 # Auth
+      - 4000:4000 # Emulator Suite UI
+    env_file:
+      - ./.env
+    working_dir: /opt/workspace
+    command: firebase emulators:start --import=seeder
+
   minio:
     image: minio/minio
     restart: always
